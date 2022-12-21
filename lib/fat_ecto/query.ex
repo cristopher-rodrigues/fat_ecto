@@ -14,7 +14,7 @@ defmodule FatEcto.FatQuery do
         raise "please define opt app when using fat query methods"
       end
 
-      @options Keyword.merge(Application.get_env(@opt_app, :fat_ecto) || [], unquote(options))
+      @options Keyword.merge(Application.compile_env(@opt_app, :fat_ecto) || [], unquote(options))
 
       @repo @options[:repo]
       if !@repo do
